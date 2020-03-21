@@ -67,29 +67,29 @@
     padding-left: 0;
     margin-top: -4em;
     margin-bottom: 3em;
-    
+
     li {
       align-items: center;
       margin-right: .75em;
-      
+
       &:before {
         content: "\0002f"; // /
         padding-right: .75em;
       }
-      
+
       &:first-child {
           &:before {
             content: "" !important;
             padding: 0 !important;
           }
       }
-      
-      &.is-active { 
+
+      &.is-active {
         &:before {
           color: _purple(fg-alt);
-        }  
+        }
       }
-      
+
       &:last-child {
         margin: 0;
       }
@@ -126,7 +126,7 @@
       text-decoration: none;
       &:hover {
         text-decoration: underline
-      }      
+      }
     }
   }
 }
@@ -174,18 +174,18 @@ section .content {
     margin: 0 0 _size(element-margin) 0;
     padding: 0 0.75em 0.5em 0;
   }
-  
+
   .edit-lesson {
     margin: 4em 0 0 0;
-    
+
     @include breakpoint(xlarge) {
       margin: 3em 0 0 0;
 		}
-    
+
     @include breakpoint(large) {
       margin: 2em 0 0 0;
 		}
-    
+
     @include breakpoint(small) {
       margin: 1em 0 0 0;
 		}

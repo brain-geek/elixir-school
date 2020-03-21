@@ -1,9 +1,10 @@
-//= require jquery.min.js
+// import "./jquery.min.js"
 // require js.cookie.js
-//= require skel.min.js
-//= require stickyfill.min.js
-//= require util.js
-//= require toc.js
+// import "./skel.min.js"
+// import "./stickyfill.min.js"
+import "./util.js"
+import "./toc.js"
+
 (function($) {
 
 	skel.breakpoints({
@@ -231,7 +232,7 @@
 					$body.toggleClass('dark');
 					toggleThemeIcon($elToggleTheme);
 				});
-				
+
 			// Polyfill for sidebar
 				Stickyfill.add($('#sidebar > .inner'));
 
