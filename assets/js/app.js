@@ -15,4 +15,6 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
-import "./main.js"
+import ui_script from "./main.js"
+
+ui_script()

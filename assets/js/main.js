@@ -1,11 +1,14 @@
-// import "./jquery.min.js"
 // require js.cookie.js
 // import "./skel.min.js"
 // import "./stickyfill.min.js"
-import "./util.js"
-import "./toc.js"
 
-(function($) {
+
+// import "./util.js"
+// import "./toc.js"
+
+import $ from "jquery"
+
+let script = function() {
 
 	skel.breakpoints({
 		xlarge: '(max-width: 1680px)',
@@ -238,4 +241,6 @@ import "./toc.js"
 
 	});
 
-})(jQuery);
+};
+
+export default script;
