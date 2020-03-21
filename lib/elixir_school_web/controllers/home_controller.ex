@@ -1,4 +1,4 @@
-defmodule ElixirSchoolWeb.PageController do
+defmodule ElixirSchoolWeb.HomeController do
   use ElixirSchoolWeb, :controller
 
   def index(conn, _params) do

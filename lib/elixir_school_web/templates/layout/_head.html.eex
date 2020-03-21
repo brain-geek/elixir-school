@@ -13,11 +13,11 @@
   <meta property="og:locale" content="{{ page.lang }}">
   <meta property="og:description" content="{{ page.locale.project.description }}">
   <meta property="og:image" content="{{ site.url }}{% asset og_image.jpg @path %}">
-  
-  {% for _interlang_chapter in site.tree[page.lang][page.section][page.chapter]['interlang'] %}
+
+<%#   {% for _interlang_chapter in site.tree[page.lang][page.section][page.chapter]['interlang'] %}
     {% assign _lang = _interlang_chapter[0] %}
     {% assign _url = _interlang_chapter[1]['url'] %}
-    
+
     {% if _lang == "en" %}
       <link rel="alternate" hreflang="en" href="{{ _url }}" />
       <link rel="alternate" hreflang="x-default" href="{{ _url }}" />
@@ -27,26 +27,30 @@
       <link rel="alternate" hreflang="{{ _lang }}" href="{{ _url }}" />
     {% endif %}
   {% endfor %}
+ %>
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.url }}{% asset favicons/apple-touch-icon.png @path %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}{% asset favicons/favicon-32x32.png @path %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.url }}{% asset favicons/favicon-16x16.png @path %}">
-  <link rel="manifest" href="{{ site.url }}{% asset favicons/manifest.json @path %}">
-  <link rel="shortcut icon" href="{{ site.url }}{% asset favicons/favicon.ico @path %}">
-  <meta name="msapplication-config" content="{{ site.url }}{% asset favicons/browserconfig.xml @path %}">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/images/favicons/apple-touch-icon.png") %>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/images/favicons/favicon-32x32.png") %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= Routes.static_path(@conn, "/images/favicons/favicon-16x16.png") %>">
+  <link rel="manifest" href="<%= Routes.static_path(@conn, "/images/favicons/manifest.json") %>">
+  <link rel="shortcut icon" href="<%= Routes.static_path(@conn, "/images/favicons/favicon.ico") %>">
+  <meta name="msapplication-config" content="<%= Routes.static_path(@conn, "/images/favicons/browserconfig.xml") %>">
+
   <meta name="theme-color" content="#ffffff">
 
-  {% assign title = locale.project.title %}
+<%#   {% assign title = locale.project.title %}
   {% unless page.title == locale.project.title or page.title == nil %}
     {% assign title = page.title  | append: " &middot; " | append: title %}
   {% else %}
 
-  {% endunless %}
+  {% endunless %} %>
+
   <title>{{ title }}</title>
   <!-- CSS -->
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-  {% asset main.css %}
+  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/main.css") %>"/>
   <!--[if lte IE 9]>{% asset ie9.css %}<![endif]-->
   <!--[if lte IE 8]>{% asset ie8.css %}<![endif]-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -56,5 +60,5 @@
   analytics.page()
   }}();
   </script>
-  {% asset js.cookie.js %}
+  <%# {% asset js.cookie.js %} %>
 </head>

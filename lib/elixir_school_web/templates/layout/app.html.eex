@@ -6,13 +6,15 @@
 {% assign locale = site.data['locales'][language] %}
  %>
 <html lang="{{ language }}{% if locale.lang_country %}-{{ locale.lang_country }}{% endif %}">
-  {% include _head.html %}
   <%= render ElixirSchoolWeb.LayoutView, "_head.html", assigns %>
+
   <body>
+<%#
     <script type="text/javascript">
-    var $theme = Cookies.get('theme');
-    if ($theme === 'dark') document.body.classList.add("dark");
+      var $theme = Cookies.get('theme');
+      if ($theme === 'dark') document.body.classList.add("dark");
     </script>
+ %>
     <!-- Wrapper -->
     <div id="wrapper">
       <!-- Main -->
@@ -20,17 +22,20 @@
         <div class="inner">
           <!-- Header -->
           <header id="header">
-            <a href="/{% if page.lang %}{{ page.lang }}/{% endif %}" class="logo"><strong>Elixir School</strong>{% if page.layout == "blog" or page.layout == "post" or page.layout == "archive" %} {{ site.data['locales']['en']['sections']['blog']}}{% endif %}</a>
-            {% include share-icons.html %}
+<%#             <a href="/{% if page.lang %}{{ page.lang }}/{% endif %}" class="logo"><strong>Elixir School</strong>{% if page.layout == "blog" or page.layout == "post" or page.layout == "archive" %} {{ site.data['locales']['en']['sections']['blog']}}{% endif %}</a>
+ %>
+            <a href="/"><strong>Elixir School</strong></a>
+            <%= render ElixirSchoolWeb.LayoutView, "_share-icons.html", assigns %>
           </header>
-          {{ content }}
+
+          <%= render @view_module, @view_template, assigns %>
         </div>
       </div>
-      {% include _sidebar.html %}
+      <%= render ElixirSchoolWeb.LayoutView, "_sidebar.html", assigns %>
     </div>
     <!-- Scripts -->
 
-    {% asset main.js %}
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <!--[if lte IE 8]>{% asset ie/respond.min.js %}<script src="assets/js/ie/respond.min.js"></script><![endif]-->
   </body>
 </html>
