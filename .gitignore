@@ -99,3 +99,6 @@ tags
 .vim
 
 # End of https://www.gitignore.io/api/osx,vim,sass,elixir,phoenix
+
+# Yarn
+yarn-error.log
