@@ -3,6 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- TODO: fix meta + OG tags -->
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta name="description" content="{{ page.locale.project.description }}">
   <meta name="author" content="Sean Callan">
@@ -13,7 +14,7 @@
   <meta property="og:locale" content="{{ page.lang }}">
   <meta property="og:description" content="{{ page.locale.project.description }}">
   <meta property="og:image" content="{{ site.url }}{% asset og_image.jpg @path %}">
-
+  <!-- TODO: fix links to alternative languages -->
 <%#   {% for _interlang_chapter in site.tree[page.lang][page.section][page.chapter]['interlang'] %}
     {% assign _lang = _interlang_chapter[0] %}
     {% assign _url = _interlang_chapter[1]['url'] %}
@@ -40,6 +41,7 @@
 
   <meta name="theme-color" content="#ffffff">
 
+  <!-- TODO: fix titles -->
 <%#   {% assign title = locale.project.title %}
   {% unless page.title == locale.project.title or page.title == nil %}
     {% assign title = page.title  | append: " &middot; " | append: title %}
@@ -49,6 +51,7 @@
 
   <title>{{ title }}</title>
   <!-- CSS -->
+  <!-- TODO: fix IE CSS -->
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/main.css") %>"/>
   <!--[if lte IE 9]>{% asset ie9.css %}<![endif]-->
@@ -60,5 +63,6 @@
   analytics.page()
   }}();
   </script>
+  <!-- TODO: fix this JS include -->
   <%# {% asset js.cookie.js %} %>
 </head>

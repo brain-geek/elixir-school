@@ -17,6 +17,7 @@ defmodule ElixirSchoolWeb.Router do
     pipe_through :browser
 
     get "/", HomeController, :index
+    get "/:lang", HomeController, :show
   end
 
   # Other scopes may use custom stacks.
