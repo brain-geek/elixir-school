@@ -29,13 +29,23 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      test: /\.s?css$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {}
+        },
+        {
+          loader: 'sass-loader',
+          options: {}
+        }
+      ]
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/app.css' }),
+    new MiniCssExtractPlugin({ filename: '../css/main.scss' }),
     new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
   ]
 });
