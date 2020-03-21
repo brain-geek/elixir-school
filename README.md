@@ -8,19 +8,23 @@ _Feedback and participation are strongly encouraged! Please see [Contributing](C
 
 ### Running locally
 
-[ElixirSchool.com](https://elixirschool.com) is generated using [Jekyll](https://github.com/jekyll/jekyll).
-To run locally, you need both Ruby and Bundler installed.
+[ElixirSchool.com](https://elixirschool.com) is run using [Phoenix](https://www.phoenixframework.org/).
+To run locally, you need Elixir installed.
 
 1. Install dependencies:
 
   ```shell
-  $ bundle install
+  $ mix deps.get
   ```
 
-2. Run Jekyll:
-
+3. Compile assets:
   ```shell
-  $ bundle exec jekyll s
+  cd assets && npm install
+  ```
+
+2. Run Phoenix:
+  ```shell
+  mix phx.server
   ```
 
 3. Access it at [http://localhost:4000](http://localhost:4000)
