@@ -13,7 +13,7 @@ defmodule ElixirSchoolWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ElixirSchoolWeb do
+  scope "/", ElixirSchoolWeb, trailing_slash: true do
     pipe_through :browser
 
     get "/", HomeController, :index
