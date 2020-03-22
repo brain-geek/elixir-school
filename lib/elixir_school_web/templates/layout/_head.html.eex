@@ -14,21 +14,19 @@
   <meta property="og:locale" content="{{ page.lang }}">
   <meta property="og:description" content="{{ page.locale.project.description }}">
   <meta property="og:image" content="{{ site.url }}{% asset og_image.jpg @path %}">
-  <!-- TODO: fix links to alternative languages -->
-<%#   {% for _interlang_chapter in site.tree[page.lang][page.section][page.chapter]['interlang'] %}
-    {% assign _lang = _interlang_chapter[0] %}
-    {% assign _url = _interlang_chapter[1]['url'] %}
 
-    {% if _lang == "en" %}
-      <link rel="alternate" hreflang="en" href="{{ _url }}" />
-      <link rel="alternate" hreflang="x-default" href="{{ _url }}" />
-    {% elsif _lang == "gr" %}
-      <link rel="alternate" hreflang="el" href="{{ _url }}" />
-    {% else %}
-      <link rel="alternate" hreflang="{{ _lang }}" href="{{ _url }}" />
-    {% endif %}
-  {% endfor %}
- %>
+  <%= @other_languages |> Enum.map(fn({language, link}) -> %>
+    <%= if language == "en" do %>
+      <link rel="alternate" hreflang="en" href="<%= link %>" />
+      <link rel="alternate" hreflang="x-default" href="<%= link %>" />
+    <%= else %>
+      <%= if language == "gr" do %>
+        <link rel="alternate" hreflang="el" href="<%= link %>" />
+      <% else %>
+        <link rel="alternate" hreflang="<%= language %>" href="<%= link %>" />
+      <% end %>
+    <% end %>
+  <% end) %>
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 

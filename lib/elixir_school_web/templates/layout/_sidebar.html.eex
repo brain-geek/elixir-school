@@ -1,16 +1,28 @@
 <!-- Sidebar -->
-  <div id="sidebar">
-    <!-- TODO: fix night mode -->
-    <p class="toggle-theme-wrapper"><a rel="noopener" href="#toggle-theme" class="toggle-theme icon fas fa-circle-o" alt="Toggle Theme" title="Toggle Theme"></a></p>
+<div id="sidebar" style="visibility: visible;">
+  <!-- TODO: fix night mode -->
+  <p class="toggle-theme-wrapper"><a rel="noopener" href="#toggle-theme" class="toggle-theme icon fas fa-circle-o" alt="Toggle Theme" title="Toggle Theme"></a></p>
 
-    <div class="inner">
-      <!-- TODO: fix alternative language links -->
-      {% include section-sidebar-langs.html %}
-      <!-- TODO: fix sidebar menu -->
-      {% include section-sidebar-menu.html %}
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; {{ site.time | date: '%Y' }} <a target="_blank" rel="noopener" href="https://github.com/doomspork">Sean Callan</a> All rights reserved.</p>
-      </footer>
-    </div>
+  <div class="inner">
+    <section id="search" class="alt">
+      <div id="locales">
+        <%= @other_languages |> Enum.map(fn({language, link}) -> %>
+          <%= if language == @conn.params["lang"] do %>
+            <%# TODO: fix <%#{% if _lang_name %}title="{{ _lang_name }}"{% endif %} part inside the tag %>
+            <strong><%= language %></strong>
+          <% else %>
+            <%# TODO: fix {% if _lang_name %}title="{{ _lang_name }}"{% endif %} part inside the tag %>
+            <%= link(language, to: link) %>
+          <% end %> <%# space left intentionally after block %>
+        <% end) %>
+      </div>
+    </section>
+
+    <!-- TODO: fix sidebar menu -->
+    {% include section-sidebar-menu.html %}
+    <!-- Footer -->
+    <footer id="footer">
+      <p class="copyright">&copy; {{ site.time | date: '%Y' }} <a target="_blank" rel="noopener" href="https://github.com/doomspork">Sean Callan</a> All rights reserved.</p>
+    </footer>
   </div>
+</div>
