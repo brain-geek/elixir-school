@@ -1,34 +1,28 @@
 <section id="banner">
   <div class="content">
-    <p>Elixir School is the premier destination for people looking to learn and master the Elixir programming language.</p>
-
-    <p>Whether you’re a seasoned veteran or this is your first time, you’ll find what you need in lessons and auxiliary resources.</p>
-
-    <p>Through the hard work of volunteers Elixir School has been translated to many languages.  Some of these translations include: <a href="/vi/">Việt ngữ</a>, <a href="/zh-hans/">简体中文</a>, <a href="/zh-hant/">繁體中文</a>, <a href="/es/">Español</a>, <a href="/sk/">Slovenčina</a>, <a href="/ja/">日本語</a>, <a href="/pl/">Polski</a>, <a href="/pt/">Português</a>, <a href="/ru/">Русский</a>, <a href="/id/">Bahasa Indonesia</a>, <a href="/ms/">Bahasa Melayu</a>, <a href="/uk/">Українською</a>, <a href="/ko/">한국어</a>, <a href="/it/">Italiano</a>, <a href="/de/">Deutsch</a>, <a href="/bn/">বাংলা</a>, <a href="/tr/">Türkçe</a>, and <a href="/th/">ภาษาไทย</a>.</p>
-
-    <p>We welcome and encourage you to join us in continuing to make Elixir School great by getting involved at <a href="https://github.com/elixirschool/elixirschool">elixirschool/elixirschool</a>!</p>
+    <%= raw @page_data.content %>
   </div>
 
   <span class="image object">
-    <!-- TODO: fix syntax highlight -->
-    {% capture getting_started %}
+    <!-- TODO: proper code highlight -->
+    <%= """
     ```elixir
     iex> defmodule Hello do
     ...>   def print(lang \\ :en)
-    ...>   def print(:de), do: "Hallo Welt"
-    ...>   def print(:en), do: "Hello World"
-    ...>   def print(:es), do: "Hola Mundo"
-    ...>   def print(:ru), do: "Привет мир"
+    ...>   def print(:de), do: \"Hallo Welt\"
+    ...>   def print(:en), do: \"Hello World\"
+    ...>   def print(:es), do: \"Hola Mundo\"
+    ...>   def print(:ru), do: \"Привет мир\"
     ...> end
 
     iex> Hello.print()
-    "Hello World!"
+    \"Hello World!\"
     iex> Hello.print(:es)
-    "Hola Mundo"
+    \"Hola Mundo\"
     iex> Hello.print(:ru)
-    "Привет мир"
+    \"Привет мир\"
     ```
-    {% endcapture %}
+    """ |> Earmark.as_html! |> raw %>
   </span>
 </section>
 
